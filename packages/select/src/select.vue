@@ -41,31 +41,6 @@
           <span class="el-select__tags-text">{{ item.currentLabel }}</span>
         </el-tag>
       </transition-group>
-
-      <input
-        type="text"
-        class="el-select__input"
-        :class="[selectSize ? `is-${ selectSize }` : '']"
-        :disabled="selectDisabled"
-        :autocomplete="autoComplete || autocomplete"
-        @focus="handleFocus"
-        @blur="softFocus = false"
-        @keyup="managePlaceholder"
-        @keydown="resetInputState"
-        @keydown.down.prevent="navigateOptions('next')"
-        @keydown.up.prevent="navigateOptions('prev')"
-        @keydown.enter.prevent="selectOption"
-        @keydown.esc.stop.prevent="visible = false"
-        @keydown.delete="deletePrevTag"
-        @keydown.tab="visible = false"
-        @compositionstart="handleComposition"
-        @compositionupdate="handleComposition"
-        @compositionend="handleComposition"
-        v-model="query"
-        @input="debouncedQueryChange"
-        v-if="filterable"
-        :style="{ 'flex-grow': '1', width: inputLength / (inputWidth - 32) + '%', 'max-width': inputWidth - 42 + 'px' }"
-        ref="input">
     </div>
     <el-input
       ref="reference"
@@ -108,6 +83,35 @@
         ref="popper"
         :append-to-body="popperAppendToBody"
         v-show="visible && emptyText !== false">
+        <div class="el-filter">
+        <input
+          type="text"
+          class="el-select__input el-filter_input w-100"
+          :class="[selectSize ? `is-${ selectSize }` : '']"
+          :disabled="selectDisabled"
+          :autocomplete="autoComplete || autocomplete"
+          @focus="handleFocus"
+          @blur="softFocus = false"
+          @keyup="managePlaceholder"
+          @keydown="resetInputState"
+          @keydown.down.prevent="navigateOptions('next')"
+          @keydown.up.prevent="navigateOptions('prev')"
+          @keydown.enter.prevent="selectOption"
+          @keydown.esc.stop.prevent="visible = false"
+          @keydown.delete="deletePrevTag"
+          @keydown.tab="visible = false"
+          @compositionstart="handleComposition"
+          @compositionupdate="handleComposition"
+          @compositionend="handleComposition"
+          v-model="query"
+          @input="debouncedQueryChange"
+          v-if="filterable"
+          ref="input">
+          <div class="el-filter_option">
+            <slot name="filter-option">
+            </slot>
+          </div>
+        </div>
         <el-scrollbar
           tag="ul"
           wrap-class="el-select-dropdown__wrap"

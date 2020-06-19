@@ -1,7 +1,14 @@
 {
-  "name": "element-ui",
-  "version": "2.13.2",
+  "name": "@levenpang/element-ui",
+  "version": "1.0.3",
   "description": "A Component Library for Vue.js.",
+  "contributors": [
+    {
+      "author": "LL030",
+      "email" : "levenpleng@gmail.com", 
+      "url" : "https://github.com/LL030/element"
+    }
+  ],
   "main": "lib/element-ui.common.js",
   "files": [
     "lib",

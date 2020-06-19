@@ -346,7 +346,7 @@
             newDate = modifyDate(this.selectableRange[0][0], value.getFullYear(), value.getMonth(), value.getDate());
           }
           this.date = newDate;
-          this.emit(this.date, this.showTime);
+          this.emit(this.date);
         } else if (this.selectionMode === 'week') {
           this.emit(value.date);
         } else if (this.selectionMode === 'dates') {
