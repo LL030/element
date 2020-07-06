@@ -5,7 +5,7 @@
       class="el-picker-panel el-date-picker el-popper"
       :class="[{
         'has-sidebar': $slots.sidebar || shortcuts,
-        'has-time': showTime
+        'has-time': showTime || timeVisiable
       }, popperClass]">
       <div class="el-picker-panel__body-wrapper">
         <slot name="sidebar" class="el-picker-panel__sidebar"></slot>
@@ -45,6 +45,20 @@
               </time-picker>
             </span>
           </div>
+          <template v-else>
+            <div class="el-date-picker__time-header" v-if="timeVisiable">
+              <span class="el-date-picker__editor-wrap">
+                <div class="el-input el-input--small is-disabled">
+                  <input type="text" :value="visibleDate" disabled="disabled" class="el-input__inner">
+                </div>
+              </span>
+              <span class="el-date-picker__editor-wrap">
+                <div class="el-input el-input--small is-disabled">
+                  <input type="text" :value="visibleTime" disabled="disabled" class="el-input__inner">
+                </div>
+              </span>
+            </div>
+          </template>
           <div
             class="el-date-picker__header"
             :class="{ 'el-date-picker__header--bordered': currentView === 'year' || currentView === 'month' }"
