@@ -245,10 +245,10 @@
         if (!value) {
           this.$emit('pick', value, ...args);
         } else if (Array.isArray(value)) {
-          const dates = value.map(date => this.showTime ? clearMilliseconds(date) : clearTime(date));
+          const dates = value.map(date => this.showTime || this.timeVisiable ? clearMilliseconds(date) : clearTime(date));
           this.$emit('pick', dates, ...args);
         } else {
-          this.$emit('pick', this.showTime ? clearMilliseconds(value) : clearTime(value), ...args);
+          this.$emit('pick', this.showTime || this.timeVisiable ? clearMilliseconds(value) : clearTime(value), ...args);
         }
         this.userInputDate = null;
         this.userInputTime = null;
@@ -511,6 +511,7 @@
         defaultValue: null, // use getDefaultValue() for time computation
         defaultTime: null,
         showTime: false,
+        timeVisiable:false,
         selectionMode: 'day',
         shortcuts: '',
         visible: false,
