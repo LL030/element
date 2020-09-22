@@ -525,7 +525,7 @@
         defaultValue: null, // use getDefaultValue() for time computation
         defaultTime: null,
         showTime: false,
-        timeVisiable:false,
+        timeVisiable: false,
         selectionMode: 'day',
         shortcuts: '',
         visible: false,

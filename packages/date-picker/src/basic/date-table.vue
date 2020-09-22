@@ -271,7 +271,7 @@
           classes.push('current');
         }
 
-        if (cell.inRange && ((cell.type === 'normal' || cell.type === 'today') || this.selectionMode === 'week')) {
+        if (cell.inRange && ((cell.type === 'next-month' || cell.type === 'prev-month' || cell.type === 'normal' || cell.type === 'today') || this.selectionMode === 'week')) {
           classes.push('in-range');
 
           if (cell.start) {

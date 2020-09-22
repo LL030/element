@@ -506,7 +506,7 @@ export default {
     },
 
     displayValue() {
-      let type = this.timeVisiable && this.type === 'date'?'datetime':this.type
+      let type = (this.timeVisiable && this.type === 'date') ? 'datetime' : this.type;
       const formattedValue = formatAsFormatAndType(this.parsedValue, this.format, type, this.rangeSeparator);
       if (Array.isArray(this.userInput)) {
         return [
@@ -833,7 +833,7 @@ export default {
       this.popperElm = this.picker.$el;
       this.picker.width = this.reference.getBoundingClientRect().width;
       this.picker.showTime = this.type === 'datetime' || this.type === 'datetimerange';
-      this.picker.timeVisiable = this.timeVisiable
+      this.picker.timeVisiable = this.timeVisiable;
       this.picker.selectionMode = this.selectionMode;
       this.picker.unlinkPanels = this.unlinkPanels;
       this.picker.arrowControl = this.arrowControl || this.timeArrowControl || false;

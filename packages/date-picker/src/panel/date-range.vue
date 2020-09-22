@@ -436,6 +436,7 @@
             ? right
             : nextMonth(this.leftDate);
         }
+        this.leftPrevMonth();
       }
     },
 
@@ -674,7 +675,6 @@
         this.maxDate = this.value && isDate(this.value[0]) ? new Date(this.value[1]) : null;
       }
     },
-
     components: { TimePicker, DateTable, ElInput, ElButton }
   };
 </script>
