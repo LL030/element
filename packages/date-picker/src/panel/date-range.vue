@@ -408,22 +408,22 @@
         } else if (Array.isArray(newVal)) {
           this.minDate = isDate(newVal[0]) ? new Date(newVal[0]) : null;
           this.maxDate = isDate(newVal[1]) ? new Date(newVal[1]) : null;
-          if (this.minDate) {
-            this.leftDate = this.minDate;
-            if (this.unlinkPanels && this.maxDate) {
+          if (this.maxDate) {
+            this.rightDate = this.maxDate;
+            if (this.unlinkPanels && this.minDate) {
               const minDateYear = this.minDate.getFullYear();
               const minDateMonth = this.minDate.getMonth();
               const maxDateYear = this.maxDate.getFullYear();
               const maxDateMonth = this.maxDate.getMonth();
-              this.rightDate = minDateYear === maxDateYear && minDateMonth === maxDateMonth
-                ? nextMonth(this.maxDate)
-                : this.maxDate;
+              this.leftDate = minDateYear === maxDateYear && minDateMonth === maxDateMonth
+                ? prevMonth(this.maxDate)
+                : this.minDate;
             } else {
-              this.rightDate = nextMonth(this.leftDate);
+              this.leftDate = prevMonth(this.rightDate);
             }
           } else {
-            this.leftDate = calcDefaultValue(this.defaultValue)[0];
-            this.rightDate = nextMonth(this.leftDate);
+            this.rightDate = calcDefaultValue(this.defaultValue)[1];
+            this.leftDate = prevMonth(this.rightDate);
           }
         }
       },
@@ -431,12 +431,11 @@
       defaultValue(val) {
         if (!Array.isArray(this.value)) {
           const [left, right] = calcDefaultValue(val);
-          this.leftDate = left;
-          this.rightDate = val && val[1] && this.unlinkPanels
-            ? right
-            : nextMonth(this.leftDate);
+          this.rightDate = right;
+          this.leftDate = val && val[0] && this.unlinkPanels
+            ? left
+            : prevMonth(this.rightDate);
         }
-        this.leftPrevMonth();
       }
     },
 
@@ -444,8 +443,8 @@
       handleClear() {
         this.minDate = null;
         this.maxDate = null;
-        this.leftDate = calcDefaultValue(this.defaultValue)[0];
-        this.rightDate = nextMonth(this.leftDate);
+        this.rightDate = calcDefaultValue(this.defaultValue)[1];
+        this.leftDate = prevMonth(this.rightDate);
         this.$emit('pick', null);
       },
 
