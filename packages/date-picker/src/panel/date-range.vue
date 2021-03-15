@@ -38,6 +38,7 @@
                   :disabled="rangeState.selecting"
                   :placeholder="t('el.datepicker.startTime')"
                   :value="minVisibleTime"
+                  :readOnly="timeReadOnly"
                   @focus="minTimePickerVisible = true"
                   @input="val => handleTimeInput(val, 'min')"
                   @change="val => handleTimeChange(val, 'min')" />
@@ -70,7 +71,7 @@
                   :disabled="rangeState.selecting"
                   :placeholder="t('el.datepicker.endTime')"
                   :value="maxVisibleTime"
-                  :readonly="!minDate"
+                  :readOnly="!minDate || timeReadOnly"
                   @focus="minDate && (maxTimePickerVisible = true)"
                   @input="val => handleTimeInput(val, 'max')"
                   @change="val => handleTimeChange(val, 'max')" />
@@ -222,7 +223,6 @@
 
   export default {
     mixins: [Locale],
-
     directives: { Clickoutside },
 
     computed: {
@@ -315,6 +315,7 @@
 
     data() {
       return {
+        timeReadOnly:false,
         popperClass: '',
         value: [],
         defaultValue: null,
@@ -347,7 +348,7 @@
         timeUserInput: {
           min: null,
           max: null
-        }
+        },
       };
     },
 

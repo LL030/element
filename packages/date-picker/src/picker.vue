@@ -377,6 +377,10 @@ export default {
       type: Boolean,
       default: true
     },
+    timeReadOnly: {
+      type: Boolean,
+      default: false
+    },
     align: {
       type: String,
       default: 'left'
@@ -829,6 +833,7 @@ export default {
       this.picker = new Vue(this.panel).$mount();
       this.picker.defaultValue = this.defaultValue;
       this.picker.defaultTime = this.defaultTime;
+      this.picker.timeReadOnly = this.timeReadOnly;
       this.picker.popperClass = this.popperClass;
       this.popperElm = this.picker.$el;
       this.picker.width = this.reference.getBoundingClientRect().width;
