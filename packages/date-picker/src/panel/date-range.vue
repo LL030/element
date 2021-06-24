@@ -7,6 +7,7 @@
         'has-sidebar': $slots.sidebar || shortcuts,
         'has-time': showTime
       }, popperClass]">
+      <slot name="quickSearch"></slot>
       <div class="el-picker-panel__body-wrapper">
         <slot name="sidebar" class="el-picker-panel__sidebar"></slot>
         <div class="el-picker-panel__sidebar" v-if="shortcuts">
@@ -315,7 +316,7 @@
 
     data() {
       return {
-        timeReadOnly:false,
+        timeReadOnly: false,
         popperClass: '',
         value: [],
         defaultValue: null,
