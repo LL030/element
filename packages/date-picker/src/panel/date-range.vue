@@ -7,7 +7,6 @@
         'has-sidebar': $slots.sidebar || shortcuts,
         'has-time': showTime
       }, popperClass]">
-      <slot name="quickSearch"></slot>
       <div class="el-picker-panel__body-wrapper">
         <slot name="sidebar" class="el-picker-panel__sidebar"></slot>
         <div class="el-picker-panel__sidebar" v-if="shortcuts">
@@ -168,6 +167,7 @@
           </div>
         </div>
       </div>
+      <slot name="quickSearch"></slot>
       <div class="el-picker-panel__footer" v-if="showTime">
         <el-button
           size="mini"

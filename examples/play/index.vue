@@ -21,6 +21,7 @@
         ref="datetimerange"
         :timeReadOnly="false"
         >
+        <div slot="quickSearch">asdasdasd,asdasda</div>
       </el-date-picker>
     </div>
   </div>
@@ -80,7 +81,7 @@
             return [d.getUTCFullYear(), (d.getUTCMonth() + 1).padLeft(), d.getUTCDate().padLeft()].join('-') + ' 12:00:00'
           } else {
             return tstamp - (d.getHours() - 12) * 3600 * 1000 - d.getMinutes() * 60 * 1000 - d.getSeconds() * 1000 - d.getMilliseconds() //for cherry
-            // return [ d.getUTCFullYear(),(d.getUTCMonth()+1).padLeft(),d.getUTCDate().padLeft()].join('-') + ' ' + 
+            // return [ d.getUTCFullYear(),(d.getUTCMonth()+1).padLeft(),d.getUTCDate().padLeft()].join('-') + ' ' +
             //        [ d.getHours().padLeft(),d.getMinutes().padLeft(), d.getSeconds().padLeft() ].join(':')
           }
         }

@@ -831,6 +831,9 @@ export default {
 
     mountPicker() {
       this.picker = new Vue(this.panel).$mount();
+      if(this.$slots.quickSearch){
+        this.picker.$slots.quickSearch = this.$slots.quickSearch;
+      }
       this.picker.defaultValue = this.defaultValue;
       this.picker.defaultTime = this.defaultTime;
       this.picker.timeReadOnly = this.timeReadOnly;
